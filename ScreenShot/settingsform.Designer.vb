@@ -40,6 +40,7 @@ Partial Class settingsform
         Me.folderdialog = New System.Windows.Forms.FolderBrowserDialog()
         Me.btnend = New System.Windows.Forms.Button()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+        Me.chkboxcolorpicker = New System.Windows.Forms.CheckBox()
         Me.lstdefcolor = New System.Windows.Forms.ComboBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.lstdefnarz = New System.Windows.Forms.ComboBox()
@@ -47,7 +48,7 @@ Partial Class settingsform
         Me.chkboxopendir = New System.Windows.Forms.CheckBox()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.chkboxcolorpicker = New System.Windows.Forms.CheckBox()
+        Me.lblver = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -237,6 +238,16 @@ Partial Class settingsform
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "Opcje aplikacji"
         '
+        'chkboxcolorpicker
+        '
+        Me.chkboxcolorpicker.AutoSize = True
+        Me.chkboxcolorpicker.Location = New System.Drawing.Point(219, 20)
+        Me.chkboxcolorpicker.Name = "chkboxcolorpicker"
+        Me.chkboxcolorpicker.Size = New System.Drawing.Size(269, 19)
+        Me.chkboxcolorpicker.TabIndex = 10
+        Me.chkboxcolorpicker.Text = "Domyślnie uruchom tryb próbkowania koloru"
+        Me.chkboxcolorpicker.UseVisualStyleBackColor = True
+        '
         'lstdefcolor
         '
         Me.lstdefcolor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
@@ -309,21 +320,22 @@ Partial Class settingsform
         Me.PictureBox1.TabIndex = 0
         Me.PictureBox1.TabStop = False
         '
-        'chkboxcolorpicker
+        'lblver
         '
-        Me.chkboxcolorpicker.AutoSize = True
-        Me.chkboxcolorpicker.Location = New System.Drawing.Point(219, 20)
-        Me.chkboxcolorpicker.Name = "chkboxcolorpicker"
-        Me.chkboxcolorpicker.Size = New System.Drawing.Size(269, 19)
-        Me.chkboxcolorpicker.TabIndex = 10
-        Me.chkboxcolorpicker.Text = "Domyślnie uruchom tryb próbkowania koloru"
-        Me.chkboxcolorpicker.UseVisualStyleBackColor = True
+        Me.lblver.AutoSize = True
+        Me.lblver.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(238, Byte))
+        Me.lblver.Location = New System.Drawing.Point(527, 254)
+        Me.lblver.Name = "lblver"
+        Me.lblver.Size = New System.Drawing.Size(57, 20)
+        Me.lblver.TabIndex = 5
+        Me.lblver.Text = "Label3"
         '
         'settingsform
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(884, 292)
+        Me.Controls.Add(Me.lblver)
         Me.Controls.Add(Me.GroupBox4)
         Me.Controls.Add(Me.btnend)
         Me.Controls.Add(Me.Label5)
@@ -381,4 +393,5 @@ Partial Class settingsform
     Friend WithEvents lstdefnarz As ComboBox
     Friend WithEvents Label1 As Label
     Friend WithEvents chkboxcolorpicker As CheckBox
+    Friend WithEvents lblver As Label
 End Class

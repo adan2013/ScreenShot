@@ -36,6 +36,7 @@ Public Class settingsform
         lstdefcolor.SelectedIndex = Form1.dane.defcolor
         chkboxcolorpicker.Checked = Form1.dane.defcolorpicker
         chkboxopendir.Checked = Form1.dane.opendir
+        lblver.Text = "Wersja: " & Form1.version
         init = False
     End Sub
 
