@@ -27,12 +27,17 @@ Public Class Form1
     Dim cordsinfo As Rectangle
     Dim cordsview As Rectangle
 
+    Dim active As Boolean = False
+
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        If IO.File.Exists(Application.StartupPath & "\settings") Then
-            dane = deserializuj(Application.StartupPath & "\settings")
-        End If
         sfcenter.Alignment = StringAlignment.Center
         sfcenter.LineAlignment = StringAlignment.Center
+        If IO.File.Exists(Application.StartupPath & "\settings") Then
+            dane = deserializuj(Application.StartupPath & "\settings")
+        Else
+            welcome.ShowDialog()
+        End If
+        active = True
     End Sub
 
     Public Sub serializuj(ByRef obiekt As Object, ByVal path As String)
@@ -89,11 +94,13 @@ Public Class Form1
             Case Keys.LMenu, Keys.RMenu
                 KBalt = False
             Case Else
-                If readkey.Visible Then
-                    readkey.odczyt(Key.ToString())
-                Else
-                    If Not Visible And Not colorresult.Visible And Not screenresult.Visible And Not settingsform.Visible Then
-                        If dane.CtrlMOD = KBctrl And dane.AltMOD = KBalt And dane.ShiftMOD = KBshift And dane.key = Key.ToString() Then uruchom(False)
+                If active Then
+                    If readkey.Visible Then
+                        readkey.odczyt(Key.ToString())
+                    Else
+                        If Not Visible And Not colorresult.Visible And Not screenresult.Visible And Not settingsform.Visible Then
+                            If dane.CtrlMOD = KBctrl And dane.AltMOD = KBalt And dane.ShiftMOD = KBshift And dane.key = Key.ToString() Then uruchom(False)
+                        End If
                     End If
                 End If
         End Select

@@ -49,6 +49,7 @@ Partial Class settingsform
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.lblver = New System.Windows.Forms.Label()
+        Me.btnpdf = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -206,7 +207,7 @@ Partial Class settingsform
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(238, Byte))
-        Me.Label5.Location = New System.Drawing.Point(565, 187)
+        Me.Label5.Location = New System.Drawing.Point(565, 168)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(272, 34)
         Me.Label5.TabIndex = 4
@@ -215,9 +216,9 @@ Partial Class settingsform
         '
         'btnend
         '
-        Me.btnend.Location = New System.Drawing.Point(702, 250)
+        Me.btnend.Location = New System.Drawing.Point(702, 254)
         Me.btnend.Name = "btnend"
-        Me.btnend.Size = New System.Drawing.Size(170, 30)
+        Me.btnend.Size = New System.Drawing.Size(170, 26)
         Me.btnend.TabIndex = 2
         Me.btnend.Text = "Zakończ działanie programu"
         Me.btnend.UseVisualStyleBackColor = True
@@ -303,7 +304,7 @@ Partial Class settingsform
         'PictureBox2
         '
         Me.PictureBox2.Image = Global.ScreenShot.My.Resources.Resources.adan2013_128
-        Me.PictureBox2.Location = New System.Drawing.Point(568, 42)
+        Me.PictureBox2.Location = New System.Drawing.Point(568, 26)
         Me.PictureBox2.Name = "PictureBox2"
         Me.PictureBox2.Size = New System.Drawing.Size(130, 130)
         Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage
@@ -313,7 +314,7 @@ Partial Class settingsform
         'PictureBox1
         '
         Me.PictureBox1.Image = Global.ScreenShot.My.Resources.Resources.logonapis
-        Me.PictureBox1.Location = New System.Drawing.Point(704, 42)
+        Me.PictureBox1.Location = New System.Drawing.Point(704, 26)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(132, 130)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -330,11 +331,21 @@ Partial Class settingsform
         Me.lblver.TabIndex = 5
         Me.lblver.Text = "Label3"
         '
+        'btnpdf
+        '
+        Me.btnpdf.Location = New System.Drawing.Point(702, 222)
+        Me.btnpdf.Name = "btnpdf"
+        Me.btnpdf.Size = New System.Drawing.Size(170, 26)
+        Me.btnpdf.TabIndex = 6
+        Me.btnpdf.Text = "Otwórz instrukcję PDF"
+        Me.btnpdf.UseVisualStyleBackColor = True
+        '
         'settingsform
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(884, 292)
+        Me.Controls.Add(Me.btnpdf)
         Me.Controls.Add(Me.lblver)
         Me.Controls.Add(Me.GroupBox4)
         Me.Controls.Add(Me.btnend)
@@ -394,4 +405,5 @@ Partial Class settingsform
     Friend WithEvents Label1 As Label
     Friend WithEvents chkboxcolorpicker As CheckBox
     Friend WithEvents lblver As Label
+    Friend WithEvents btnpdf As Button
 End Class

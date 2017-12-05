@@ -152,4 +152,12 @@ Public Class settingsform
         If init Then Exit Sub
         Form1.dane.defcolorpicker = chkboxcolorpicker.Checked
     End Sub
+
+    Private Sub btnpdf_Click(sender As Object, e As EventArgs) Handles btnpdf.Click
+        Try
+            Process.Start(Application.StartupPath & "\instrukcja.pdf")
+        Catch ex As Exception
+            MsgBox("Wystąpił problem z otwarciem instrukcji PDF!" & vbNewLine & "Plik być może został usunięty z komputera", MsgBoxStyle.Exclamation, "ScreenShot")
+        End Try
+    End Sub
 End Class
