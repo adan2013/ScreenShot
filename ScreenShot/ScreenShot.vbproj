@@ -200,6 +200,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="bin\Debug\adan2013-128.png" />
+    <None Include="bin\Debug\welcomescreen.png" />
     <Content Include="icoapk.ico" />
   </ItemGroup>
   <ItemGroup>
