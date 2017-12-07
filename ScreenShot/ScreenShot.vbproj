@@ -201,6 +201,9 @@
   <ItemGroup>
     <None Include="bin\Debug\adan2013-128.png" />
     <None Include="bin\Debug\welcomescreen.png" />
+    <None Include="bin\Debug\screenbtncenter.png" />
+    <None Include="bin\Debug\screenbtnprzywroc.png" />
+    <None Include="bin\Debug\screenbtntekst.png" />
     <Content Include="icoapk.ico" />
   </ItemGroup>
   <ItemGroup>

@@ -36,8 +36,8 @@ Partial Class screenresult
         Me.btnsave = New System.Windows.Forms.ToolStripButton()
         Me.btncpsave = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
-        Me.btnresetview = New System.Windows.Forms.ToolStripButton()
         Me.btncut = New System.Windows.Forms.ToolStripButton()
+        Me.btnresetview = New System.Windows.Forms.ToolStripButton()
         Me.btncancel = New System.Windows.Forms.ToolStripButton()
         Me.ts2 = New System.Windows.Forms.ToolStrip()
         Me.k1 = New System.Windows.Forms.ToolStripButton()
@@ -57,9 +57,9 @@ Partial Class screenresult
         Me.lstfont = New System.Windows.Forms.ToolStripComboBox()
         Me.lststyle = New System.Windows.Forms.ToolStripComboBox()
         Me.txtbox = New System.Windows.Forms.ToolStripTextBox()
-        Me.ekran = New System.Windows.Forms.PictureBox()
         Me.akt = New System.Windows.Forms.Timer(Me.components)
         Me.savedialog = New System.Windows.Forms.SaveFileDialog()
+        Me.ekran = New System.Windows.Forms.PictureBox()
         Me.ts1.SuspendLayout()
         Me.ts2.SuspendLayout()
         CType(Me.ekran, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -69,7 +69,7 @@ Partial Class screenresult
         '
         Me.ts1.BackColor = System.Drawing.Color.LightGray
         Me.ts1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
-        Me.ts1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnrysowanie, Me.btnprostokat, Me.btnokrag, Me.btnfont, Me.btnback, Me.btnreset, Me.ToolStripSeparator2, Me.btncp, Me.btnsave, Me.btncpsave, Me.ToolStripSeparator3, Me.btnresetview, Me.btncut, Me.btncancel})
+        Me.ts1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnrysowanie, Me.btnprostokat, Me.btnokrag, Me.btnfont, Me.btnback, Me.btnreset, Me.ToolStripSeparator2, Me.btncp, Me.btnsave, Me.btncpsave, Me.ToolStripSeparator3, Me.btncut, Me.btnresetview, Me.btncancel})
         Me.ts1.Location = New System.Drawing.Point(0, 0)
         Me.ts1.Name = "ts1"
         Me.ts1.Padding = New System.Windows.Forms.Padding(5, 2, 2, 2)
@@ -119,13 +119,13 @@ Partial Class screenresult
         'btnfont
         '
         Me.btnfont.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.btnfont.Image = Global.ScreenShot.My.Resources.Resources.icoapk
+        Me.btnfont.Image = Global.ScreenShot.My.Resources.Resources.screenbtntekst
         Me.btnfont.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.btnfont.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.btnfont.Margin = New System.Windows.Forms.Padding(0, 1, 2, 2)
         Me.btnfont.Name = "btnfont"
         Me.btnfont.Padding = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.btnfont.Size = New System.Drawing.Size(72, 69)
+        Me.btnfont.Size = New System.Drawing.Size(58, 69)
         Me.btnfont.Text = "Tekst"
         '
         'btnback
@@ -145,7 +145,7 @@ Partial Class screenresult
         '
         Me.btnreset.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
         Me.btnreset.Enabled = False
-        Me.btnreset.Image = Global.ScreenShot.My.Resources.Resources.screenbtn5
+        Me.btnreset.Image = Global.ScreenShot.My.Resources.Resources.screenbtnprzywroc
         Me.btnreset.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.btnreset.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.btnreset.Margin = New System.Windows.Forms.Padding(0, 1, 2, 2)
@@ -202,18 +202,6 @@ Partial Class screenresult
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
         Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 72)
         '
-        'btnresetview
-        '
-        Me.btnresetview.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.btnresetview.Image = Global.ScreenShot.My.Resources.Resources.icoapk
-        Me.btnresetview.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
-        Me.btnresetview.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.btnresetview.Margin = New System.Windows.Forms.Padding(0, 1, 2, 2)
-        Me.btnresetview.Name = "btnresetview"
-        Me.btnresetview.Padding = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.btnresetview.Size = New System.Drawing.Size(72, 69)
-        Me.btnresetview.Text = "Resetuj widok"
-        '
         'btncut
         '
         Me.btncut.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
@@ -225,6 +213,18 @@ Partial Class screenresult
         Me.btncut.Padding = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.btncut.Size = New System.Drawing.Size(58, 69)
         Me.btncut.Text = "Powtórz wycinanie"
+        '
+        'btnresetview
+        '
+        Me.btnresetview.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.btnresetview.Image = Global.ScreenShot.My.Resources.Resources.screenbtncenter
+        Me.btnresetview.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.btnresetview.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnresetview.Margin = New System.Windows.Forms.Padding(0, 1, 2, 2)
+        Me.btnresetview.Name = "btnresetview"
+        Me.btnresetview.Padding = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.btnresetview.Size = New System.Drawing.Size(58, 69)
+        Me.btnresetview.Text = "Resetuj widok"
         '
         'btncancel
         '
@@ -413,16 +413,6 @@ Partial Class screenresult
         Me.txtbox.Size = New System.Drawing.Size(200, 27)
         Me.txtbox.Visible = False
         '
-        'ekran
-        '
-        Me.ekran.BackColor = System.Drawing.Color.Gray
-        Me.ekran.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.ekran.Location = New System.Drawing.Point(0, 107)
-        Me.ekran.Name = "ekran"
-        Me.ekran.Size = New System.Drawing.Size(1034, 355)
-        Me.ekran.TabIndex = 2
-        Me.ekran.TabStop = False
-        '
         'akt
         '
         Me.akt.Enabled = True
@@ -432,6 +422,16 @@ Partial Class screenresult
         '
         Me.savedialog.Filter = "Plik PNG (*.png)|*.png|Plik JPG (*.jpg)|*.jpg|Plik BMP (*.bmp)|*.bmp"
         Me.savedialog.FilterIndex = 0
+        '
+        'ekran
+        '
+        Me.ekran.BackColor = System.Drawing.Color.Gray
+        Me.ekran.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.ekran.Location = New System.Drawing.Point(0, 107)
+        Me.ekran.Name = "ekran"
+        Me.ekran.Size = New System.Drawing.Size(1034, 355)
+        Me.ekran.TabIndex = 2
+        Me.ekran.TabStop = False
         '
         'screenresult
         '

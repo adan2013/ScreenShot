@@ -1,7 +1,7 @@
 ﻿Imports System.Runtime.Serialization.Formatters.Binary
 Public Class Form1
 
-    Public Const version As String = "v1.1"
+    Public Const version As String = "v1.2"
 
     Dim WithEvents kb As KeyboardHook = New KeyboardHook()
     Public KBctrl As Boolean = False
