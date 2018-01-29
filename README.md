@@ -7,6 +7,8 @@ Aplikacja służy do szybkiego wykonywania zrzutów ekranu z możliwością ich 
 ## Kadrowanie zrzutu
 Program umożliwia wykadrowanie ekranu, aby wskazywał to co chcemy udostępnić, bez wrażliwych danych użytkownika. Jeśli kadr nie wyjdzie i chcemy go zmienić nawet po wykonaniu zrzutu aplikacja umożliwia powtórzenie kadrowania ponownie z tą samą zawartością ekranu.
 
+![Kadrowanie zrzutu ekranu](/screenshot1.png)
+
 ## Edycja zrzutów zaraz po zrobieniu
 Po wykonaniu zrzutu aplikacja umożliwia szybką edycję obrazu poprzez następujące funkcje:
 * **rysik** - swobodne zaznaczanie elementów na ekranie
@@ -21,11 +23,15 @@ Umożliwia także:
 * zmianę grubości linii lub konturu
 * zmianę rozmiaru, kroju i stylu czcionki wprowadzanych tekstów
 
+![Edytor zrzutów](/screenshot2.png)
+
 ## Zapisz do pliku lub schowka
 Po wykonaniu zrzutu i ewentualnej edycji obrazu aplikacja umożliwia zapisanie zrzutu do pliku lub skopiowanie go do schowka systemowego. Możliwy jest też jednoczesny zapis do pliku i schowka.
 
 ## Próbkowanie koloru z ekranu
 Dzięki naciśnięciu jednego przycisku program do tworzenia zrzutów ekranu można przełączyć w tryb próbkowania koloru i odczytać wskazaną barwę widniejącą na ekranie komputera.
+
+![Próbkowanie kolorów](/screenshot3.png)
 
 ## Więcej informacji
 Instrukcja obsługi aplikacji znajduje się w katalogu głównym udostępnionym na GitHubie. Zawiera ona dodatowe informacje o działaniu aplikacji i jej obsłudze.
