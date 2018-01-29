@@ -13,6 +13,7 @@ Po wykonaniu zrzutu aplikacja umożliwia szybką edycję obrazu poprzez następu
 * **prostokąt** - zaznaczanie fragmentów ekranu za pomocą prostokątów
 * **elipsa** - zaznaczanie fragmentów ekranu za pomocą elips
 * **tekst** - dodawanie tekstów opisujących rzeczy na ekranie
+
 Umożliwia także:
 * zmianę koloru rysowanych elementów
 * wypełnianie kolorem rysowanych elementów
