@@ -24,14 +24,14 @@
         If key = "Escape" Then
             DialogResult = DialogResult.Cancel
         Else
-            ShiftMOD = Form1.KBshift
-            CtrlMOD = Form1.KBctrl
-            AltMOD = Form1.KBalt
+            ShiftMOD = My.Computer.Keyboard.ShiftKeyDown
+            CtrlMOD = My.Computer.Keyboard.CtrlKeyDown
+            AltMOD = My.Computer.Keyboard.AltKeyDown
             regkey = key
             Dim s As String = ""
-            s &= IIf(Form1.KBctrl, "CTRL + ", "")
-            s &= IIf(Form1.KBalt, "ALT + ", "")
-            s &= IIf(Form1.KBshift, "SHIFT + ", "")
+            s &= IIf(My.Computer.Keyboard.CtrlKeyDown, "CTRL + ", "")
+            s &= IIf(My.Computer.Keyboard.AltKeyDown, "ALT + ", "")
+            s &= IIf(My.Computer.Keyboard.ShiftKeyDown, "SHIFT + ", "")
             s &= key
             msg = True
             lbl.Text = s

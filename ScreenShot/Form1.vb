@@ -4,9 +4,6 @@ Public Class Form1
     Public Const version As String = "v1.3"
 
     Dim WithEvents kb As KeyboardHook = New KeyboardHook()
-    Public KBctrl As Boolean = False
-    Public KBalt As Boolean = False
-    Public KBshift As Boolean = False
     Public dane As MAGAZYN = New MAGAZYN()
 
     Public colorpickermode As Boolean = False
@@ -75,31 +72,24 @@ Public Class Form1
     End Sub
 
     Private Sub kb_KeyDown(Key As Keys) Handles kb.KeyDown
-        Select Case Key
-            Case Keys.LShiftKey, Keys.RShiftKey
-                KBshift = True
-            Case Keys.LControlKey, Keys.RControlKey
-                KBctrl = True
-            Case Keys.LMenu, Keys.RMenu
-                KBalt = True
-        End Select
+
     End Sub
 
     Private Sub kb_KeyUp(Key As Keys) Handles kb.KeyUp
         Select Case Key
             Case Keys.LShiftKey, Keys.RShiftKey
-                KBshift = False
+
             Case Keys.LControlKey, Keys.RControlKey
-                KBctrl = False
+
             Case Keys.LMenu, Keys.RMenu
-                KBalt = False
+
             Case Else
                 If active Then
                     If readkey.Visible Then
                         readkey.odczyt(Key.ToString())
                     Else
                         If Not Visible And Not colorresult.Visible And Not screenresult.Visible And Not settingsform.Visible Then
-                            If dane.CtrlMOD = KBctrl And dane.AltMOD = KBalt And dane.ShiftMOD = KBshift And dane.key = Key.ToString() Then uruchom(False)
+                            If dane.CtrlMOD = My.Computer.Keyboard.CtrlKeyDown And dane.AltMOD = My.Computer.Keyboard.AltKeyDown And dane.ShiftMOD = My.Computer.Keyboard.ShiftKeyDown And dane.key = Key.ToString() Then uruchom(False)
                         End If
                     End If
                 End If
