@@ -41,7 +41,8 @@ Public Class settingsform
     End Sub
 
     Private Sub aktautostart()
-        If IO.File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.Startup) & "\ScreenShot.lnk") Then
+        If My.Computer.Registry.CurrentUser.OpenSubKey("SOFTWARE\Microsoft\Windows\CurrentVersion\Run", True).GetValue(Application.ProductName) IsNot Nothing Then
+            'If IO.File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.Startup) & "\ScreenShot.lnk") Then
             lblautostart.Text = "Włączony"
             btnautostart.Text = "Wyłącz"
         Else
@@ -51,26 +52,29 @@ Public Class settingsform
     End Sub
 
     Private Sub btnautostart_Click(sender As Object, e As EventArgs) Handles btnautostart.Click
-        If IO.File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.Startup) & "\ScreenShot.lnk") Then
+        'If IO.File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.Startup) & "\ScreenShot.lnk") Then
+        If My.Computer.Registry.CurrentUser.OpenSubKey("SOFTWARE\Microsoft\Windows\CurrentVersion\Run", True).GetValue(Application.ProductName) IsNot Nothing Then
             'usuń autostart
             Try
-                IO.File.Delete(Environment.GetFolderPath(Environment.SpecialFolder.Startup) & "\ScreenShot.lnk")
+                My.Computer.Registry.CurrentUser.OpenSubKey("SOFTWARE\Microsoft\Windows\CurrentVersion\Run", True).DeleteValue(Application.ProductName)
+                'IO.File.Delete(Environment.GetFolderPath(Environment.SpecialFolder.Startup) & "\ScreenShot.lnk")
             Catch ex As Exception
-                MsgBox("Błąd usuwania pliku autostartu! Spróbuj usunąć go ręcznie:" & vbNewLine & vbNewLine & Environment.GetFolderPath(Environment.SpecialFolder.Startup) & "\ScreenShot.lnk", MsgBoxStyle.Critical, "ScreenShot")
+                MsgBox("Błąd usuwania pliku autostartu!", MsgBoxStyle.Critical, "ScreenShot")
             End Try
         Else
             'dodaj autostart
             Try
-                Dim WshShell As New WshShell
-                Dim shortCut As IWshShortcut = CType(WshShell.CreateShortcut(Environment.GetFolderPath(Environment.SpecialFolder.Startup) & "\ScreenShot.lnk"), IWshShortcut)
-                With shortCut
-                    .TargetPath = Application.ExecutablePath
-                    .WorkingDirectory = Application.StartupPath
-                    .IconLocation = Application.ExecutablePath & ", 0"
-                    .Save()
-                End With
+                My.Computer.Registry.CurrentUser.OpenSubKey("SOFTWARE\Microsoft\Windows\CurrentVersion\Run", True).SetValue(Application.ProductName, Application.ExecutablePath)
+                'Dim WshShell As New WshShell
+                'Dim shortCut As IWshShortcut = CType(WshShell.CreateShortcut(Environment.GetFolderPath(Environment.SpecialFolder.Startup) & "\ScreenShot.lnk"), IWshShortcut)
+                'With shortCut
+                '    .TargetPath = Application.ExecutablePath
+                '    .WorkingDirectory = Application.StartupPath
+                '    .IconLocation = Application.ExecutablePath & ", 0"
+                '    .Save()
+                'End With
             Catch ex As Exception
-                MsgBox("Błąd dodawania pliku autostartu! Spróbuj uruchomić aplikację z uprawnieniami administratora!", MsgBoxStyle.Critical, "ScreenShot")
+                MsgBox("Błąd dodawania pliku autostartu!", MsgBoxStyle.Critical, "ScreenShot")
             End Try
         End If
         Thread.Sleep(800)
