@@ -1,7 +1,7 @@
 ﻿Imports System.Runtime.Serialization.Formatters.Binary
 Public Class Form1
 
-    Public Const version As String = "v1.3"
+    Public Const version As String = "v1.4"
 
     Public WithEvents kb As HOTKEY = New HOTKEY()
     Public dane As MAGAZYN = New MAGAZYN()
