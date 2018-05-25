@@ -86,7 +86,7 @@
       <DependentUpon>Form1.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="kbhook.vb" />
+    <Compile Include="HOTKEY.vb" />
     <Compile Include="MAGAZYN.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">

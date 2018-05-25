@@ -109,7 +109,10 @@ Public Class settingsform
     End Sub
 
     Private Sub btnend_Click(sender As Object, e As EventArgs) Handles btnend.Click
-        If MsgBox("Zakończyć działanie programu?" & vbNewLine & "Program przestanie działać w tle i nie będzie można go wywołać skrótem klawiszowym", MsgBoxStyle.Exclamation + MsgBoxStyle.YesNo, "ScreenShot") = MsgBoxResult.Yes Then Form1.Close()
+        If MsgBox("Zakończyć działanie programu?" & vbNewLine & "Program przestanie działać w tle i nie będzie można go wywołać skrótem klawiszowym", MsgBoxStyle.Exclamation + MsgBoxStyle.YesNo, "ScreenShot") = MsgBoxResult.Yes Then
+            Form1.kb.endworking()
+            Form1.Close()
+        End If
     End Sub
 
     Private Sub btnskrot_Click(sender As Object, e As EventArgs) Handles btnskrot.Click
@@ -130,6 +133,18 @@ Public Class settingsform
             If Form1.dane.AltMOD Then lblskrot.Text &= "Alt+"
             lblskrot.Text &= Form1.dane.key
         End If
+        Form1.kb.deletehotkey("capture")
+        Dim modif As HOTKEY.KeyModifier
+        If Form1.dane.ShiftMOD Then modif += HOTKEY.KeyModifier.Shift
+        If Form1.dane.CtrlMOD Then modif += HOTKEY.KeyModifier.Control
+        If Form1.dane.AltMOD Then modif += HOTKEY.KeyModifier.Alt
+        Try
+            If Not Form1.kb.addhotkey("capture", Form1.dane.GetKey(Form1.dane.key), modif) Then
+                MsgBox("Wystąpił problem podczas uruchamiania skrótu klawiszowego! Spróbuj go zmienić w ustawieniach...", MsgBoxStyle.Exclamation, "ScreenShot")
+            End If
+        Catch ex As Exception
+            MsgBox("Wystąpił problem podczas uruchamiania skrótu klawiszowego! Spróbuj go zmienić w ustawieniach...", MsgBoxStyle.Exclamation, "ScreenShot")
+        End Try
     End Sub
 
     Private Sub listext_SelectedIndexChanged(sender As Object, e As EventArgs) Handles listext.SelectedIndexChanged

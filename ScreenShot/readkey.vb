@@ -19,20 +19,20 @@
         Controls.Add(lbl)
     End Sub
 
-    Public Sub odczyt(ByVal key As String)
+    Public Sub odczyt(ByVal key As Keys)
         If msg Then Exit Sub
-        If key = "Escape" Then
+        If key = Keys.Escape Then
             DialogResult = DialogResult.Cancel
         Else
             ShiftMOD = My.Computer.Keyboard.ShiftKeyDown
             CtrlMOD = My.Computer.Keyboard.CtrlKeyDown
             AltMOD = My.Computer.Keyboard.AltKeyDown
-            regkey = key
+            regkey = key.ToString()
             Dim s As String = ""
             s &= IIf(My.Computer.Keyboard.CtrlKeyDown, "CTRL + ", "")
             s &= IIf(My.Computer.Keyboard.AltKeyDown, "ALT + ", "")
             s &= IIf(My.Computer.Keyboard.ShiftKeyDown, "SHIFT + ", "")
-            s &= key
+            s &= key.ToString()
             msg = True
             lbl.Text = s
             btnnie.Visible = True
@@ -49,5 +49,14 @@
 
     Private Sub btntak_Click(sender As Object, e As EventArgs) Handles btntak.Click
         DialogResult = DialogResult.OK
+    End Sub
+
+    Private Sub readkey_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
+        Select Case e.KeyCode
+            Case Keys.ShiftKey, Keys.ControlKey, Keys.Alt, Keys.Menu, Keys.LWin, Keys.RWin, Keys.Capital, Keys.Scroll, Keys.NumLock
+
+            Case Else
+                odczyt(e.KeyCode)
+        End Select
     End Sub
 End Class

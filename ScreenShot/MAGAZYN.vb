@@ -16,4 +16,9 @@ Public Class MAGAZYN
     Public Sub New()
 
     End Sub
+
+    Public Function GetKey(ByVal theKey As String) As Keys
+        Dim kc As KeysConverter = New KeysConverter()
+        Return CType(kc.ConvertFrom(theKey), Keys)
+    End Function
 End Class

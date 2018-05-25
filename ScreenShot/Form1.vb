@@ -3,7 +3,7 @@ Public Class Form1
 
     Public Const version As String = "v1.3"
 
-    Dim WithEvents kb As KeyboardHook = New KeyboardHook()
+    Public WithEvents kb As HOTKEY = New HOTKEY()
     Public dane As MAGAZYN = New MAGAZYN()
 
     Public colorpickermode As Boolean = False
@@ -34,6 +34,18 @@ Public Class Form1
         Else
             welcome.ShowDialog()
         End If
+        Dim modif As HOTKEY.KeyModifier
+        If dane.ShiftMOD Then modif += HOTKEY.KeyModifier.Shift
+        If dane.CtrlMOD Then modif += HOTKEY.KeyModifier.Control
+        If dane.AltMOD Then modif += HOTKEY.KeyModifier.Alt
+        kb.startworking(Me)
+        Try
+            If Not kb.addhotkey("capture", dane.GetKey(dane.key), modif) Then
+                MsgBox("Wystąpił problem podczas uruchamiania skrótu klawiszowego! Spróbuj go zmienić w ustawieniach...", MsgBoxStyle.Exclamation, "ScreenShot")
+            End If
+        Catch ex As Exception
+            MsgBox("Wystąpił problem podczas uruchamiania skrótu klawiszowego! Spróbuj go zmienić w ustawieniach...", MsgBoxStyle.Exclamation, "ScreenShot")
+        End Try
         active = True
     End Sub
 
@@ -71,30 +83,43 @@ Public Class Form1
         Hide()
     End Sub
 
-    Private Sub kb_KeyDown(Key As Keys) Handles kb.KeyDown
-
+    Protected Overrides Sub WndProc(ByRef m As Message)
+        If Not readkey.Visible Then kb.messagehook(m)
+        MyBase.WndProc(m)
     End Sub
 
-    Private Sub kb_KeyUp(Key As Keys) Handles kb.KeyUp
-        Select Case Key
-            Case Keys.LShiftKey, Keys.RShiftKey
-
-            Case Keys.LControlKey, Keys.RControlKey
-
-            Case Keys.LMenu, Keys.RMenu
-
-            Case Else
-                If active Then
-                    If readkey.Visible Then
-                        readkey.odczyt(Key.ToString())
-                    Else
-                        If Not Visible And Not colorresult.Visible And Not screenresult.Visible And Not settingsform.Visible Then
-                            If dane.CtrlMOD = My.Computer.Keyboard.CtrlKeyDown And dane.AltMOD = My.Computer.Keyboard.AltKeyDown And dane.ShiftMOD = My.Computer.Keyboard.ShiftKeyDown And dane.key = Key.ToString() Then uruchom(False)
-                        End If
-                    End If
-                End If
-        End Select
+    Private Sub kb_HotKeyDetected(tagname As String) Handles kb.HotKeyDetected
+        If tagname = "capture" And active Then
+            If Not Visible And Not colorresult.Visible And Not screenresult.Visible And Not settingsform.Visible Then
+                uruchom(False)
+            End If
+        End If
     End Sub
+
+    'Private Sub kb_KeyDown(Key As Keys) Handles kb.KeyDown
+
+    'End Sub
+
+    'Private Sub kb_KeyUp(Key As Keys) Handles kb.KeyUp
+    '    Select Case Key
+    '        Case Keys.LShiftKey, Keys.RShiftKey
+
+    '        Case Keys.LControlKey, Keys.RControlKey
+
+    '        Case Keys.LMenu, Keys.RMenu
+
+    '        Case Else
+    '            If active Then
+    '                If readkey.Visible Then
+    '                    readkey.odczyt(Key.ToString())
+    '                Else
+    '                    If Not Visible And Not colorresult.Visible And Not screenresult.Visible And Not settingsform.Visible Then
+    '                        If dane.CtrlMOD = My.Computer.Keyboard.CtrlKeyDown And dane.AltMOD = My.Computer.Keyboard.AltKeyDown And dane.ShiftMOD = My.Computer.Keyboard.ShiftKeyDown And dane.key = Key.ToString() Then uruchom(False)
+    '                    End If
+    '                End If
+    '            End If
+    '    End Select
+    'End Sub
 
     Public Sub uruchom(ByVal renew As Boolean)
         If Not renew Then
@@ -122,6 +147,7 @@ Public Class Form1
     End Sub
 
     Private Sub Form1_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        kb.endworking()
         If IO.File.Exists(Application.StartupPath & "\settings") Then
             IO.File.Delete(Application.StartupPath & "\settings")
         End If
